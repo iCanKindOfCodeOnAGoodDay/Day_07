@@ -42,6 +42,9 @@ def main():
     ------
         
     """
+    
+    hangman_words = [ "mystery", "quartz", "jazz", "buzz", "fuzzy", "vortex", "jackpot", "zigzag", "quiz", "oxygen", "ivy", "strength", "rhythm", "lynx", "pixel", "zombie", "kayak", "gazebo", "equip", "galaxy", "walker", "whiskey", "jinx", "jukebox", "kiosk", "haiku", "fluff", "jiffy", "haphazard", "embezzle", "bikini", "blizzard", "espionage", "flapjack", "gnarly", "humble", "ivory", "jump", "knight", "light", "mango", "nugget", "ostrich", "penguin", "quiver", "river", "sphinx", "tornado", "umbrella", "vampire" ]
+
     R_word = pick_word()
     
     word_length = len(R_word)
@@ -57,19 +60,18 @@ def main():
     run_game(R_word, word_with_blanks)
     
 
-def pick_word():
+def pick_word( hangman_words ):
     """
     Description - Returns a random word from the list
     ------
     
-    Parameters - Hardcoded list of words
+    Inputs - Words are hardcoded in main func for now
     ------
 
     Outputs - One of the words
     ------
         
     """
-    hangman_words = [ "mystery", "quartz", "jazz", "buzz", "fuzzy", "vortex", "jackpot", "zigzag", "quiz", "oxygen", "ivy", "strength", "rhythm", "lynx", "pixel", "zombie", "kayak", "gazebo", "equip", "galaxy", "walker", "whiskey", "jinx", "jukebox", "kiosk", "haiku", "fluff", "jiffy", "haphazard", "embezzle", "bikini", "blizzard", "espionage", "flapjack", "gnarly", "humble", "ivory", "jump", "knight", "light", "mango", "nugget", "ostrich", "penguin", "quiver", "river", "sphinx", "tornado", "umbrella", "vampire" ]
 
     R = random.randint(0, len(hangman_words))
     
@@ -136,7 +138,7 @@ def draw_gallows( guesses_used ):
     Description - Library for ASCII art messages in console
     ------
     
-    Parameters - Guesses used can't go over index count or there will be error
+    Inputs - Guesses used can't go over index count or there will be error
     ------
 
     Outputs - Text for the console based on index (guesses_used)
@@ -219,7 +221,7 @@ def initalize_word( R_word ):
     Description - starting point for the hidden word that is displayed for users to guess letters belong to
     ------
     
-    Parameters - Loops through the random word characters
+    Inputs - Loops through the random word characters
     ------
     
     Outputs - Outputs an underscore for each of the letters
