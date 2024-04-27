@@ -52,6 +52,8 @@ def main():
     
     print(word_with_blanks, end='\n\n\n\n\n')
     
+    print(draw_gallows(0))
+    
     run_game(R_word, word_with_blanks)
     
 
@@ -93,12 +95,9 @@ def run_game(R_word, word_with_blanks):
     ------
         
     """
+    
     guesses = 6
-    
-    print(draw_gallows(0))
-    
     guesses_used = 0
-    
  
     while guesses >= 0:
         correct_guess = False
@@ -123,8 +122,6 @@ def run_game(R_word, word_with_blanks):
                 break
             print(f'\nWhoops! You\'ve got {str(guesses)} left!\n\n')
             #print(draw_gallows( guesses_used ))
-            
-
         
         else:
             print(f'NICE!\n\n\n{word_with_blanks}')
@@ -133,8 +130,7 @@ def run_game(R_word, word_with_blanks):
     print('\n\n\ngame over!')
     print(draw_gallows( guesses_used ))
 
-                
-       
+                     
 def draw_gallows( guesses_used ):
     """
     Description - Library for ASCII art messages in console
@@ -218,7 +214,6 @@ def draw_gallows( guesses_used ):
     return gallows
 
     
-       
 def initalize_word( R_word ):
     """
     Description - starting point for the hidden word that is displayed for users to guess letters belong to
