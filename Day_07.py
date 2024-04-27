@@ -6,15 +6,15 @@
     April 26 2024
 
     ------
-    Description:    Hangman
+    Description:    Hangman - Console input/ output game
     ------
     
     ------
-    Inputs:         Words are hardcoded, User input
+    Inputs:         Console input
     ------
     
     ------
-    Outputs:        Hangman Game
+    Outputs:        Console output
     ------
     
     ------
@@ -31,21 +31,68 @@ import random
 
 
 def main():
+    """
+    Description - Runs hangman
+    ------
     
+    Inputs - Gameplay requires user input in console
+    ------
+
+    Outputs - Gameplay
+    ------
+        
+    """
+    R_word = pick_word()
+    
+    word_length = len(R_word)
+    
+    word_with_blanks = initalize_word(R_word)
+    
+    print('\n\n')
+    
+    print(word_with_blanks, end='\n\n\n\n\n')
+    
+    run_game(R_word, word_with_blanks)
+    
+
+def pick_word():
+    """
+    Description - Returns a random word from the list
+    ------
+    
+    Parameters - Hardcoded list of words
+    ------
+
+    Outputs - One of the words
+    ------
+        
+    """
     hangman_words = [ "mystery", "quartz", "jazz", "buzz", "fuzzy", "vortex", "jackpot", "zigzag", "quiz", "oxygen", "ivy", "strength", "rhythm", "lynx", "pixel", "zombie", "kayak", "gazebo", "equip", "galaxy", "walker", "whiskey", "jinx", "jukebox", "kiosk", "haiku", "fluff", "jiffy", "haphazard", "embezzle", "bikini", "blizzard", "espionage", "flapjack", "gnarly", "humble", "ivory", "jump", "knight", "light", "mango", "nugget", "ostrich", "penguin", "quiver", "river", "sphinx", "tornado", "umbrella", "vampire" ]
 
     R = random.randint(0, len(hangman_words))
     
     R_word = hangman_words[R]
     
-    word_length = len(R_word)
+    return R_word
+
+
+def run_game(R_word, word_with_blanks):
+    """
+    Description - Runs hangman, console game with user input and game in console
+    ------
     
-    word_with_blanks = list(initalize_word(R_word))
+    Inputs 
+    ------
+        
+    User input in console
+    word with blanks is the random word as a list with characters hidden, revealed as user guesses correctly
     
-    print('\n\n')
-    
-    print(word_with_blanks, end='\n\n\n\n\n')
-    
+    ------
+
+    Outputs - Gameplay in console
+    ------
+        
+    """
     guesses = 6
     
     print(draw_gallows(0))
@@ -86,10 +133,20 @@ def main():
     print('\n\n\ngame over!')
     print(draw_gallows( guesses_used ))
 
-
                 
        
 def draw_gallows( guesses_used ):
+    """
+    Description - Library for ASCII art messages in console
+    ------
+    
+    Parameters - Guesses used can't go over index count or there will be error
+    ------
+
+    Outputs - Text for the console based on index (guesses_used)
+    ------
+        
+    """
     
     hangman_steps = [
     """
@@ -163,14 +220,24 @@ def draw_gallows( guesses_used ):
     
        
 def initalize_word( R_word ):
-
-    word = ''
+    """
+    Description - starting point for the hidden word that is displayed for users to guess letters belong to
+    ------
+    
+    Parameters - Loops through the random word characters
+    ------
+    
+    Outputs - Outputs an underscore for each of the letters
+    ------
+        
+    """
+    word = []
     for char in R_word:
-        word += '_'
+        word.append('_')
         
     return word 
         
-    
-    
+
+# run
 if __name__ == '__main__':
     main()
