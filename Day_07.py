@@ -228,6 +228,7 @@ def initalize_word( R_word ):
     ------
         
     """
+    
     word = []
     for char in R_word:
         word.append('_')
